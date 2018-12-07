@@ -2,7 +2,8 @@
 {% block content %}
 <form method="POST">
 {% csrf_token %}
-<p> Are you sure want to delete {{ object }} ?</p>
+<h3> Are you sure want to delete {{ object }} ?</h3><br>
 <button class="btn btn-danger" type="submit">Delete</button>
+<a href=" {% url 'post_detail' pk=object.pk %}" class="btn btn-default">Cancel</a>
 </form>
 {% endblock %}

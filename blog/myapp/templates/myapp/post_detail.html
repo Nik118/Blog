@@ -3,36 +3,38 @@
 <h1 class="posttitle loader">{{ post.title }}<h1>
   {% if post.published_date %}
   <div class="date postdate">
-{{ post.published_date }}
-</div>
+<h3>{{ post.published_date }}</h3>
+</div><br>
+{% endif %}
 
-  {% else %}
+{% if not post.published_date and user == post.author  %}
   <a class="btn btn-primary" href="{% url 'publish_post' pk=post.pk %}">Publish</a>
-  {% endif %}
-<p class="postcontent">{{ post.text|safe|linebreaksbr }} </p>
-  {% if user.is_authenticated and user == post.author %}
+{% endif %}
+
+<p class="postcontent">{{ post.text|safe|linebreaksbr }} </p><br>
+
+{% if  user == post.author %}
   <a class="btn btn-primary" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
   <a class="btn btn-primary" href="{% url 'post_remove' pk=post.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
-
-  {% endif %}
+{% endif %}
 
 <hr>
   <a class="btn btn-primary btn-comment" href="{% url 'add_comment' pk=post.pk %}">Add Comment</a>
 <div class="container">
 {% for comment in post.comments.all %}
 <br>
-{% if user.is_authenticated or post.approved_comment %}
-{{ comment.create_date }}
+<h5>{{ comment.create_date }}
+{% if not comment.approved_comment and user == post.author and user == comment.author  %}
+<a class="btn btn-primary" href="{% url 'approve_comment' pk=comment.pk %}"><span class="glyphicon glyphicon-ok"></span></a>
+{% endif %}
 
-{% if not comment.approved_comment %}
+{% if not comment.approved_comment and user == post.author and user != comment.author %}
 <a class="btn btn-primary" href="{% url 'remove_comment' pk=comment.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
 <a class="btn btn-primary" href="{% url 'approve_comment' pk=comment.pk %}"><span class="glyphicon glyphicon-ok"></span></a>
-
+</h5>
 {% endif %}
-
-<p> {{ comment.text|safe|linebreaks }}</p>
-<p>Posted by: {{ comment.author }}</p>
-{% endif %}
+<h4><strong>{{ comment.text|safe|linebreaks }}</strong></h4>
+<h5>Posted By: {{ comment.author }}</h5>
 
 {% empty %}
 <h3>No Comments </h3>

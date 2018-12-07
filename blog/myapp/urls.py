@@ -3,7 +3,7 @@ from myapp import views
 
 urlpatterns = [
         url(r'^$',views.PostListView.as_view(),name='post_list'),
-        url(r'^about/$',views.AboutView.as_view(),name='about'),
+        url(r'^post/myposts/',views.MyPostListView.as_view(),name='my_list'),
         url(r'^post/(?P<pk>\d+)$',views.PostDetailView.as_view(),name='post_detail'),
         url(r'^post/new/$',views.CreatepostView.as_view(),name='post_new'),
         url(r'^post/(?P<pk>\d+)/edit/$',views.UpdatePostview.as_view(),name='post_edit'),

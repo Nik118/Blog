@@ -1,12 +1,11 @@
 {% extends "myapp/base.html" %}
 {% block content %}
-{% for post in posts %}
-
-<div class="post">
-<p class="date"> Created: {{ post.create_date|date:"d-m-Y" }}</p>
-<h1><a href="{% url  'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
-<p> {{ post.text|truncatechars:200 }}
-
+{% for post in post_list %}
+<br>
+<h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+<div class="date">
+  <h4>Author Name : <strong>{{ post.author }}</strong> </h4>
+  <p>Created At : <strong>{{ post.created_date }}</strong></p>
 </div>
 {% endfor %}
 {% endblock %}

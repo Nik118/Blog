@@ -1,9 +1,10 @@
 {% extends "myapp/base.html" %}
 {% block content %}
 <h1> New Comment </h1>
+<br><br>
 <form class="post-form" method="POST">
 {% csrf_token %}
-{{ form.as_p }}
+{{ form.as_p }}<br>
 <button type="submit" class="btn btn-primary save">Comment</button>
 </form>
 
