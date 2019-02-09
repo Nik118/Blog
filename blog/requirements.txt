@@ -2,7 +2,7 @@ bcrypt==3.1.4
 certifi==2018.4.16
 cffi==1.11.5
 chardet==3.0.4
-Django==1.11.13
+Django==1.11.18
 django-allauth==0.36.0
 django-bootstrap3==10.0.1
 django-braces==1.13.0
@@ -17,7 +17,7 @@ pycparser==2.18
 pysolr==3.3.2
 python-dateutil==2.7.3
 pytz==2018.4
-requests==2.19.1
+requests==2.20.0
 six==1.11.0
 sqlparse==0.2.4
 text-unidecode==1.2
