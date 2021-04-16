@@ -6,7 +6,7 @@ Django==1.11.28
 django-allauth==0.36.0
 django-bootstrap3==10.0.1
 django-braces==1.13.0
-django-debug-toolbar==1.9.1
+django-debug-toolbar==1.11.1
 django-haystack==2.4.0
 Faker==0.8.15
 gunicorn==19.9.0
